@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Animal
+
 enum AnimalState {Ready, Drag, Release };
 
 const DRAG_LIMIT_MAX: Vector2 = Vector2(0,60);
@@ -29,6 +31,10 @@ func setup() -> void:
 	_arrow_scale_x = arrow.scale.x;
 	arrow.hide();
 	_start = position;
+
+func die() -> void:
+	SignalHub.animal_died.emit();
+	queue_free();
 	
 
 # Called when the node enters the scene tree for the first time.
@@ -117,6 +123,7 @@ func change_state(new_state : AnimalState) -> void:
 
 #region signal
 func screen_exited() -> void:
+	die();
 	pass # Replace with function body.
 
 
