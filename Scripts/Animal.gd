@@ -134,10 +134,17 @@ func _on_rigid_body_2d_input_event(_viewport: Node, event: InputEvent, _shape_id
 
 
 func _on_sleeping_state_changed() -> void:
+	if sleeping:
+		for body in get_colliding_bodies():
+			if body is Cup:
+				body.die();
+				call_deferred("die");
 	pass # Replace with function body.
 
 
-func _on_body_entered(_body: Node) -> void:
+func _on_body_entered(body: Node) -> void:
+	if body is Cup and not kick_sound.playing:
+		kick_sound.play();
 	pass # Replace with function body.
 	
 #endregion
