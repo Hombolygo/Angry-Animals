@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://d01de62ot4d32"]
+
+[ext_resource type="Texture2D" uid="uid://bhadyx3tyj8k4" path="res://assets/env/elementStone025.png" id="1_myinc"]
+[ext_resource type="Texture2D" uid="uid://cfisxpr854uw1" path="res://icon.svg" id="2_njov2"]
+[ext_resource type="PackedScene" uid="uid://vxcygoik8f5j" path="res://Scenes/Animal.tscn" id="3_2au82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njov2"]
+size = Vector2(28.0001, 1181)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_njov2"]
+rough = true
+bounce = 1.0
+
+[sub_resource type="GDScript" id="GDScript_njov2"]
+script/source = "extends RigidBody2D
+
+@onready var label: Label = $Label
+@onready var floot: StaticBody2D = $\"../floot\"
+@onready var sprite_2d: Sprite2D = $\"../floot/Sprite2D\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2au82"]
+radius = 37.054
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2au82"]
+bounce = 0.5
+absorbent = true
+
+[node name="Test" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(3, 324)
+scale = Vector2(0.385714, 2.96364)
+texture = ExtResource("1_myinc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3.5, 320.5)
+shape = SubResource("RectangleShape2D_njov2")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1148, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(3, 324)
+scale = Vector2(0.385714, 2.96364)
+texture = ExtResource("1_myinc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(3.5, 320.5)
+shape = SubResource("RectangleShape2D_njov2")
+
+[node name="floot" type="StaticBody2D" parent="."]
+position = Vector2(623, 644)
+rotation = 1.5708
+physics_material_override = SubResource("PhysicsMaterial_njov2")
+
+[node name="Sprite2D" type="Sprite2D" parent="floot"]
+position = Vector2(3, 52.9512)
+scale = Vector2(0.385714, 5.42772)
+texture = ExtResource("1_myinc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floot"]
+position = Vector2(3, 60.5)
+shape = SubResource("RectangleShape2D_njov2")
+
+[node name="bird" type="RigidBody2D" parent="."]
+position = Vector2(494, 467)
+script = SubResource("GDScript_njov2")
+
+[node name="Sprite2D" type="Sprite2D" parent="bird"]
+position = Vector2(26.979, 26.979)
+scale = Vector2(0.578453, 0.578453)
+texture = ExtResource("2_njov2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bird"]
+position = Vector2(27, 26.5)
+shape = SubResource("CircleShape2D_2au82")
+
+[node name="Label" type="Label" parent="bird"]
+offset_left = -10.0
+offset_top = -48.0
+offset_right = 54.0
+offset_bottom = 1.0
+text = "0000000
+"
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(846, 272)
+rotation = 1.5708
+physics_material_override = SubResource("PhysicsMaterial_2au82")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+position = Vector2(26.979, 26.979)
+scale = Vector2(0.578453, 0.578453)
+texture = ExtResource("2_njov2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(27, 26.5)
+shape = SubResource("CircleShape2D_2au82")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(810, 179)
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+position = Vector2(26.979, 26.979)
+scale = Vector2(0.578453, 0.578453)
+texture = ExtResource("2_njov2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(27, 26.5)
+shape = SubResource("CircleShape2D_2au82")
+
+[node name="Animal" parent="." instance=ExtResource("3_2au82")]
+position = Vector2(295, 190)
