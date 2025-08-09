@@ -1,6 +1,5 @@
 extends Node
 
 signal animal_died;
-
-func animal_died_emit() -> void:
-	animal_died.emit();
+signal attempt_made;
+signal cup_destroyed(remaining_cups: int);

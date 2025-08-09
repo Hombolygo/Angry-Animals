@@ -13,10 +13,10 @@ func _ready() -> void:
 
 
 func die() -> void:
-	
 	animation_player.play("Vanish");
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	cups -= 1;
+	SignalHub.cup_destroyed.emit(cups);
 	queue_free();

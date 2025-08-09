@@ -99,6 +99,7 @@ func start_release() -> void:
 	launch_sound.play();
 	freeze = false;
 	apply_central_impulse(calculate_impulse())
+	SignalHub.attempt_made.emit();
 	pass
 
 #endregion
