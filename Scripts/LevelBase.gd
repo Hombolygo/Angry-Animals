@@ -1,7 +1,12 @@
 extends Node2D
-
 @onready var marker_2d: Marker2D = $Marker2D
+
 const ANIMAL = preload("res://Scenes/Animal.tscn")
+const MAIN = preload("res://Scenes/Main.tscn")
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("esc"):
+		get_tree().change_scene_to_packed(MAIN);
 
 func spawn_animal() -> void:
 	var animal = ANIMAL.instantiate();

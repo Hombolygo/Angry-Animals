@@ -6,6 +6,21 @@
 [ext_resource type="LabelSettings" uid="uid://b2jtc2i0xu7kk" path="res://Resources/Blue_72_font.tres" id="2_po7eo"]
 [ext_resource type="AudioStream" uid="uid://8pvqq6x23iju" path="res://assets/audio/jazzyfrenchy.mp3" id="5_wjrrg"]
 
+[sub_resource type="Animation" id="Animation_co6lq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer2/LevelSpaceLabel:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.952941, 0, 0.819608, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_frnsy"]
 resource_name = "flash"
 loop_mode = 1
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.117647, 0.117647, 0.772549, 1), Color(0.952941, 0, 0.819608, 1), Color(0.117647, 0.117647, 0.772549, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_co6lq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/VBoxContainer2/LevelSpaceLabel:label_settings:font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.952941, 0, 0.819608, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wjrrg"]
